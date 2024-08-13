@@ -93,7 +93,6 @@ function DisplayError(message) {
     detailsDisplay.innerHTML = "<b>Error:</b> " + message;
 }
 
-
 // When page loads, see if location is supported or not
 if ("geolocation" in navigator) {
     // Get users location, on success this will make the API request

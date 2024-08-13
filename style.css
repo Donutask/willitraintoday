@@ -2,12 +2,19 @@ body {
     font-family: 'Roboto', sans-serif;
     color: black;
     background-color: whitesmoke;
-    margin: 0px;
     text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
-
 main {
+    flex: 1;
+}
+
+#container {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -15,19 +22,21 @@ main {
     transform: translate(-50%, -50%);
     min-width: 80vw;
     padding-bottom: 50px;
+    margin: 0;
 }
 
 h1 {
-    font-size: 3vw;
+    font-size: min(2.9em, 9vw);
     font-weight: 400;
 }
 
 #result {
-    font-size: 10vw;
+    font-size: min(9em, 40vw);
     margin: 0;
     padding: 0;
     font-weight: 500;
 }
+
 
 .loading {
     animation: loadingAnimation 0.75s ease-in-out 0s infinite alternate forwards;
@@ -45,18 +54,18 @@ h1 {
 }
 
 #details {
-    font-size: 2vw;
+    font-size: min(1.75em, 4vw);
 }
 
+
 footer {
-    text-align: center;
-    position: absolute;
-    width: 70%;
-    padding-left: 15%;
-    padding-right: 15%;
-    bottom: 10px;
-    /* overflow: hidden; */
-    height: 40px;
+    min-height: 50px;
+    padding: 5px;
+}
+
+small {
+    display: block;
+    font-size: x-small;
 }
 
 a {
