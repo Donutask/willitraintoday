@@ -15,6 +15,7 @@ const locationOptions = {
 function LocationSuccess(pos) {
     const crd = pos.coords;
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${crd.latitude}&longitude=${crd.longitude}&daily=precipitation_probability_max&forecast_days=1`
+    console.log(url);
 
     detailsDisplay.innerHTML = "Getting weather";
 
@@ -63,24 +64,24 @@ function DisplayWeatherResult(data) {
     // 80 - 95: Yes
     // 95 - 100: Yes!
     if (isNaN(p) || !isFinite(p)) {
-        resultDisplay.innerHTML = "???"
+        resultDisplay.textContent = "???"
     } else if (p <= 5) {
-        resultDisplay.innerHTML = "No!";
+        resultDisplay.textContent = "No!";
     } else if (p <= 20) {
-        resultDisplay.innerHTML = "No"
+        resultDisplay.textContent = "No"
     } else if (p <= 30) {
-        resultDisplay.innerHTML = "Nah"
+        resultDisplay.textContent = "Nah"
     } else if (p <= 70) {
-        resultDisplay.innerHTML = "Maybe";
+        resultDisplay.textContent = "Maybe";
     } else if (p <= 80) {
-        resultDisplay.innerHTML = "Yeah";
+        resultDisplay.textContent = "Yeah";
     } else if (p < 95) {
-        resultDisplay.innerHTML = "Yes";
+        resultDisplay.textContent = "Yes";
     } else if (p <= 100) {
-        resultDisplay.innerHTML = "Yes!";
+        resultDisplay.textContent = "Yes!";
     } else {
         //Over 100% somehow
-        resultDisplay.innerHTML = "Yes!!";
+        resultDisplay.textContent = "Yes!!";
     }
     detailsDisplay.innerHTML = `Approximately <b>${p}%</b> chance of rain.`;
 }
@@ -89,7 +90,7 @@ function DisplayWeatherResult(data) {
 function DisplayError(message) {
     resultDisplay.className = "";
 
-    resultDisplay.innerHTML = "Dunno";
+    resultDisplay.textContent = "Dunno";
     detailsDisplay.innerHTML = "<b>Error:</b> " + message;
 }
 
@@ -97,8 +98,8 @@ function DisplayError(message) {
 if ("geolocation" in navigator) {
     // Get users location, on success this will make the API request
     resultDisplay.className = "loading";
-    resultDisplay.innerHTML = "Loading";
-    detailsDisplay.innerHTML = "Getting location"
+    resultDisplay.textContent = "Loading";
+    detailsDisplay.textContent = "Getting location"
 
     navigator.geolocation.getCurrentPosition(LocationSuccess, LocationError, locationOptions);
 
